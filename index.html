@@ -1,66 +1,157 @@
-<!doctype html>
-<html lang="tl">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>GCRA SOLID — Members Directory</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GCRA Member Website</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-  <header class="topbar">
+
+  <header class="header">
     <div>
-      <h1>GCRA SOLID</h1>
-      <p>GRAB CAVITE RIDERS ALLIANCE — Members Directory</p>
+      <h1>GCRA</h1>
+      <p>Member Management System</p>
     </div>
-    <span id="roleBadge" class="badge">VIEW ONLY</span>
+
+    <div class="role-area">
+      <span id="roleBadge" class="badge">VIEW ONLY</span>
+
+      <select id="role">
+        <option value="member">Member</option>
+        <option value="admin">Authorized Admin</option>
+        <option value="owner">Owner</option>
+      </select>
+    </div>
   </header>
 
   <main class="container">
-    <section class="card intro">
-      <h2>Member Directory</h2>
-      <p>Maligayang pagdating sa GCRA SOLID Members Directory. Ang regular members ay view-only. Ang Owner at Authorized Admin lamang ang maaaring mag-edit ng records.</p>
+
+    <section class="welcome">
+      <h2>GCRA Members</h2>
+      <p>Member directory and verification system</p>
+    </section>
+
+    <section class="toolbar">
+
+      <input
+        type="search"
+        id="search"
+        placeholder="Search member, ID, location..."
+      >
+
+      <button id="addBtn" class="primary">
+        + Add Member
+      </button>
+
     </section>
 
     <section class="card">
-      <div class="toolbar">
-        <input id="search" type="search" placeholder="🔎 Hanapin ang member...">
-        <button id="addBtn" class="primary hidden">+ Add Member</button>
-      </div>
+
       <div class="table-wrap">
+
         <table>
-          <thead><tr><th>Member ID</th><th>Pangalan</th><th>Lugar</th><th>Status</th><th>Actions</th></tr></thead>
+
+          <thead>
+            <tr>
+              <th>Member ID</th>
+              <th>Name</th>
+              <th>Location</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+
           <tbody id="memberRows"></tbody>
+
         </table>
+
       </div>
-      <p id="empty" class="empty hidden">Walang nahanap na member.</p>
+
+      <div id="empty" class="empty hidden">
+        No members found.
+      </div>
+
     </section>
 
-    <section class="card">
-      <h3>Member Access</h3>
-      <p>Ang tunay na Owner/Admin authentication at database permissions ay ikakabit sa susunod na hakbang.</p>
-      <select id="role">
-        <option value="member">Member — View Only</option>
-        <option value="admin">Authorized Admin — Edit</option>
-        <option value="owner">Owner — Full Control</option>
-      </select>
-    </section>
   </main>
 
+
+  <!-- ADD / EDIT MEMBER -->
+
   <dialog id="memberDialog">
-    <form id="memberForm" class="form">
+
+    <form id="memberForm" method="dialog">
+
       <h2 id="dialogTitle">Add Member</h2>
+
       <input type="hidden" id="memberIndex">
-      <label>Member ID<input id="memberId" required></label>
-      <label>Pangalan<input id="name" required></label>
-      <label>Lugar<input id="location"></label>
-      <label>Status<select id="status"><option>Active</option><option>Inactive</option><option>Pending</option></select></label>
-      <div class="form-actions">
-        <button type="button" id="cancelBtn">Cancel</button>
-        <button type="submit" class="primary">Save</button>
+
+      <label>
+        GCRA Member ID
+        <input
+          type="text"
+          id="memberId"
+          placeholder="GCRA-004"
+          required
+        >
+      </label>
+
+      <label>
+        Full Name
+        <input
+          type="text"
+          id="name"
+          placeholder="Member name"
+          required
+        >
+      </label>
+
+      <label>
+        Location
+        <input
+          type="text"
+          id="location"
+          placeholder="Cavite"
+        >
+      </label>
+
+      <label>
+        Status
+        <select id="status">
+          <option value="Active">Active</option>
+          <option value="Pending">Pending</option>
+          <option value="Inactive">Inactive</option>
+        </select>
+      </label>
+
+      <div class="dialog-actions">
+
+        <button
+          type="button"
+          onclick="document.getElementById('memberDialog').close()"
+        >
+          Cancel
+        </button>
+
+        <button type="submit" class="primary">
+          Save Member
+        </button>
+
       </div>
+
     </form>
+
   </dialog>
 
+
+  <footer>
+    <p>GCRA • Member Website</p>
+  </footer>
+
+
   <script src="app.js"></script>
+
 </body>
 </html>
