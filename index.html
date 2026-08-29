@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="tl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GCRA SOLID — Members Directory</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <h1>GCRA SOLID</h1>
+      <p>GRAB CAVITE RIDERS ALLIANCE — Members Directory</p>
+    </div>
+    <span id="roleBadge" class="badge">VIEW ONLY</span>
+  </header>
+
+  <main class="container">
+    <section class="card intro">
+      <h2>Member Directory</h2>
+      <p>Maligayang pagdating sa GCRA SOLID Members Directory. Ang regular members ay view-only. Ang Owner at Authorized Admin lamang ang maaaring mag-edit ng records.</p>
+    </section>
+
+    <section class="card">
+      <div class="toolbar">
+        <input id="search" type="search" placeholder="🔎 Hanapin ang member...">
+        <button id="addBtn" class="primary hidden">+ Add Member</button>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Member ID</th><th>Pangalan</th><th>Lugar</th><th>Status</th><th>Actions</th></tr></thead>
+          <tbody id="memberRows"></tbody>
+        </table>
+      </div>
+      <p id="empty" class="empty hidden">Walang nahanap na member.</p>
+    </section>
+
+    <section class="card">
+      <h3>Member Access</h3>
+      <p>Ang tunay na Owner/Admin authentication at database permissions ay ikakabit sa susunod na hakbang.</p>
+      <select id="role">
+        <option value="member">Member — View Only</option>
+        <option value="admin">Authorized Admin — Edit</option>
+        <option value="owner">Owner — Full Control</option>
+      </select>
+    </section>
+  </main>
+
+  <dialog id="memberDialog">
+    <form id="memberForm" class="form">
+      <h2 id="dialogTitle">Add Member</h2>
+      <input type="hidden" id="memberIndex">
+      <label>Member ID<input id="memberId" required></label>
+      <label>Pangalan<input id="name" required></label>
+      <label>Lugar<input id="location"></label>
+      <label>Status<select id="status"><option>Active</option><option>Inactive</option><option>Pending</option></select></label>
+      <div class="form-actions">
+        <button type="button" id="cancelBtn">Cancel</button>
+        <button type="submit" class="primary">Save</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>
